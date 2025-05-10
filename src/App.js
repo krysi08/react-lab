@@ -4,18 +4,20 @@ import {useState} from "react";
 
 function App() {
     const [email, setEmail] = useState('abc@gmail.com');
+    const [authenticalUsername, setAuthenticalUsername] = useState(null);
 
     let message;
-    if (email.length < 10) {
-        message = "Ale masz krotki adres!";
-    } else if (email.length < 15) {
-        message = "Adres jest okej!";
-    } else{
-        message = "Za dlugi adres!";
-}
+//     if (email.length < 10) {
+//         message = "Ale masz krotki adres!";
+//     } else if (email.length < 15) {
+//         message = "Adres jest okej!";
+//     } else{
+//         message = "Za dlugi adres!";
+// }
 
     function handleButtonclick(){
-        alert("Twoj adres email to: " + email);
+        alert("Witaj: " + email + "!" + " " + "Wyloguj");
+
     }
 
     function handleChange(event){
@@ -24,11 +26,20 @@ function App() {
 
   return (
     <div>
-      <h1> system do zapisow zajec</h1>
-      <h2> twoj email to: {email}</h2>
-      <div>{message} </div>
+      <h1> Witaj w systemie do zapisow na zajecia!</h1>
+        {!authenticalUsername && (
+        <div>
+    Zaloguj sie mailem:
       <input type="text" onChange={handleChange} />
-        <button type = "button" onClick={handleButtonclick} > Wyswietl moj email w alercie</button>
+        <button type = "button" onClick={() => setAuthenticalUsername(email)}> Wchodze</button>
+    </div>
+        )}
+        {authenticalUsername && <div>
+        <div>
+            <h4>Jestem zalogowany jako: {authenticalUsername}</h4>
+            <a onClick={() => setAuthenticalUsername(null)}> Wyloguj</a>
+        </div>
+        </div>}
     </div>
   );
 }
