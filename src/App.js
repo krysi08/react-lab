@@ -15,5 +15,6 @@ function App() {
       <input type="text" onChange={handleChange} />
     </div>
   );
+
 }
 export default App;
