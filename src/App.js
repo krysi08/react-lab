@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
-  let email = "abc@gmail.com"
+    const [email, setEmail] = useState('abc@gmail.com');
 
     function handleChange(event){
-      console.log(event.target.value);
+      setEmail(event.target.value);
     }
   return (
     <div className="App">
@@ -15,5 +16,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
